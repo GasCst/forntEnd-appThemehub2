@@ -1,0 +1,92 @@
+<div class="container">
+    <div class="row mt-3">
+      <div class="mr-2">
+        <span>
+          <a class="text-primary-600" href="javascript:void(0)">{{title}}</a>
+        </span>
+      </div>
+      <div class="mr-2">
+        <span>
+          >
+        </span>
+      </div>
+      <div>
+        <span>
+          <a class="text-primary-600" href="">Gestisci Categorie</a>
+        </span>
+      </div>
+    </div>
+    <div class="row">
+      <h2 class="text-sub-title">Cerca Categorie</h2>
+    </div>
+  </div>
+  
+  
+  <div class="container">
+      <div class="row">
+        <div class="mr-2">
+          <button class="btn-raised" mat-raised-button (click)="onCreate( )">
+            <mat-icon svgIcon="plus"></mat-icon>
+        </button>
+        </div>
+        <div class="mr-2">
+          <button  class="btn-raised"  mat-raised-button>
+            <mat-icon svgIcon="eraser"></mat-icon>
+        </button>
+        </div>
+        <div class="w-60">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Ricerca Avanzata</mat-label>
+            <input type="text" matInput placeholder="Ricerca Avanzata">
+            <mat-icon matSuffix svgIcon="search"></mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+  </div>
+  
+  <div class="container">
+    <br />
+    <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="lstDataSource">
+
+      <ng-container matColumnDef="ID">
+        <th mat-header-cell fxFlex="20%" fxFlexAlign="center" *matHeaderCellDef>IDENTIFIER</th>
+        <td mat-cell fxFlex="20%"  *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="NAME">
+        <th mat-header-cell fxFlex="70%" fxFlexAlign="center"  *matHeaderCellDef>NAME</th>
+        <td mat-cell fxFlex="70%"  *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+  
+
+      <ng-container matColumnDef="DESCRIPTION">
+        <th mat-header-cell fxFlex="70%" fxFlexAlign="center"  *matHeaderCellDef>DESCRIPTION</th>
+        <td mat-cell fxFlex="70%"  *matCellDef="let element">{{ element.description }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="SELECT">
+        <th mat-header-cell fxFlex="10%" fxFlexAlign="center"  *matHeaderCellDef>SELECT</th>
+        <td mat-cell fxFlex="10%"  *matCellDef="let row">
+          <button mat-icon-button matTooltip="modifica" (click)="onCreate(row)">
+            <mat-icon svgIcon="edit"></mat-icon>
+          </button>
+          <button mat-icon-button matTooltip="elimina">
+            <mat-icon svgIcon="delete"></mat-icon>
+          </button>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="lstColumnsTable"></tr>
+      <tr mat-row *matRowDef="let row; columns: lstColumnsTable"></tr>
+    </table>
+    <mat-paginator
+      [length]="totalElements"
+      [pageSize]="5"
+      [pageSizeOptions]="[5, 10, 15]"
+      showFirstLastButtons
+    >
+    </mat-paginator>
+    </div>
+  </div>
+  

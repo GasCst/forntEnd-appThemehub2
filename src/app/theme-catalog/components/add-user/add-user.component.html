@@ -1,0 +1,115 @@
+<h2 mat-dialog-title>
+    {{ frmUser.controls["id"].value ? "Update User" : "ADD User" }}
+  </h2>
+  <mat-divider></mat-divider>
+  <mat-dialog-content>
+    <div class="container" [formGroup]="frmUser">
+      <div class="row">
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>IDENTIFIER</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder="IDENTIFIER"
+            formControlName="id"
+          />
+        </mat-form-field>
+      </div>
+  
+      <div class="row">
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>USERNAME</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder="USERNAME"
+            formControlName="username"
+          />
+          <mat-error> Per favore, inserisci una username </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>EMAIL</mat-label>
+          <input
+            type="email"
+            matInput
+            placeholder="EMAIL"
+            formControlName="email"
+          />
+          <mat-error> Per favore, inserisci un indirizzo email valido </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>PASSWORD</mat-label>
+          <input
+            type="password"
+            matInput
+            placeholder="PASSWORD"
+            formControlName="password"
+          />
+          <mat-error> Per favore, inserisci una password valida </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>FIRSTNAME</mat-label>
+          <input
+            type="firstname"
+            matInput
+            placeholder="FIRSTNAME"
+            formControlName="firstname"
+          />
+          <mat-error> Per favore, inserisci un firstname valido </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>LASTNAME</mat-label>
+          <input
+            type="lastname"
+            matInput
+            placeholder="LASTNAME"
+            formControlName="lastname"
+          />
+          <mat-error> Per favore, inserisci un lastname valido </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>COMPANY</mat-label>
+          <input
+            type="company"
+            matInput
+            placeholder="COMPANY"
+            formControlName="company"
+          />
+          <mat-error> Per favore, inserisci una company valida </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>STATE</mat-label>
+          <input
+            type="state"
+            matInput
+            placeholder="STATE"
+            formControlName="state"
+          />
+          <mat-error> Per favore, inserisci uno state valido </mat-error>
+        </mat-form-field>
+
+
+      </div>
+    </div>
+  </mat-dialog-content>
+  <mat-divider></mat-divider>
+  <mat-dialog-actions align="end">
+    <button type="button" mat-button mat-dialog-close (click)="onClose()">
+      close
+    </button>
+    <button
+      type="submit"
+      mat-button
+      [disabled]="onDisabled()"
+      (click)="onSubmit()"
+    >
+      send
+    </button>
+  </mat-dialog-actions>

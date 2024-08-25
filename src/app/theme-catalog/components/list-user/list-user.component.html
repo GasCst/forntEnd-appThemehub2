@@ -1,0 +1,116 @@
+<div class="container">
+    <div class="row mt-3">
+      <div class="mr-2">
+        <span>
+          <a class="text-primary-600" href="javascript:void(0)">{{title}}</a>
+        </span>
+      </div>
+      <div class="mr-2">
+        <span>
+          >
+        </span>
+      </div>
+      <div>
+        <span>
+          <a class="text-primary-600" href="">Gestisci Utenti</a>
+        </span>
+      </div>
+    </div>
+    <div class="row">
+      <h2 class="text-sub-title">Cerca Utenti</h2>
+    </div>
+  </div>
+  
+  
+  <div class="container">
+      <div class="row">
+        <div class="mr-2">
+          <button class="btn-raised" mat-raised-button (click)="onCreate( )">
+            <mat-icon svgIcon="plus"></mat-icon>
+        </button>
+        </div>
+        <div class="mr-2">
+          <button  class="btn-raised"  mat-raised-button>
+            <mat-icon svgIcon="eraser"></mat-icon>
+        </button>
+        </div>
+        <div class="w-60">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Ricerca Avanzata</mat-label>
+            <input type="text" matInput placeholder="Ricerca Avanzata">
+            <mat-icon matSuffix svgIcon="search"></mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
+  </div>
+  
+  <div class="container">
+    <br />
+    <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="lstDataSource">
+
+      <ng-container matColumnDef="ID">
+        <th mat-header-cell fxFlex="10%" fxFlexAlign="center" *matHeaderCellDef>IDENTIFIER</th>
+        <td mat-cell fxFlex="10%"  *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="USERNAME">
+        <th mat-header-cell fxFlex="10%" fxFlexAlign="center" *matHeaderCellDef>USERNAME</th>
+        <td mat-cell fxFlex="10%"  *matCellDef="let element">{{ element.username }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="EMAIL">
+        <th mat-header-cell fxFlex="10%" fxFlexAlign="center" *matHeaderCellDef>EMAIL</th>
+        <td mat-cell fxFlex="10%"  *matCellDef="let element">{{ element.email }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="PASSWORD">
+        <th mat-header-cell fxFlex="10%" fxFlexAlign="center" *matHeaderCellDef>PASSWORD</th>
+        <td mat-cell fxFlex="10%"  *matCellDef="let element">{{ element.password }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="FIRSTNAME">
+        <th mat-header-cell fxFlex="10%" fxFlexAlign="center" *matHeaderCellDef>FIRSTNAME</th>
+        <td mat-cell fxFlex="10%"  *matCellDef="let element">{{ element.firstName }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="LASTNAME">
+        <th mat-header-cell fxFlex="10%" fxFlexAlign="center" *matHeaderCellDef>LASTNAME</th>
+        <td mat-cell fxFlex="10%"  *matCellDef="let element">{{ element.lastName }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="COMPANY">
+        <th mat-header-cell fxFlex="10%" fxFlexAlign="center" *matHeaderCellDef>COMPANY</th>
+        <td mat-cell fxFlex="10%"  *matCellDef="let element">{{ element.company }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="STATE">
+        <th mat-header-cell fxFlex="10%" fxFlexAlign="center" *matHeaderCellDef>STATE</th>
+        <td mat-cell fxFlex="10%"  *matCellDef="let element">{{ element.state }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="SELECT">
+        <th mat-header-cell fxFlex="20%" fxFlexAlign="center"  *matHeaderCellDef>SELECT</th>
+        <td mat-cell fxFlex="20%"  *matCellDef="let row">
+          <button mat-icon-button matTooltip="modifica" (click)="onCreate(row)">
+            <mat-icon svgIcon="edit"></mat-icon>
+          </button>
+          <button mat-icon-button matTooltip="elimina">
+            <mat-icon svgIcon="delete"></mat-icon>
+          </button>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="lstColumnsTable"></tr>
+      <tr mat-row *matRowDef="let row; columns: lstColumnsTable"></tr>
+    </table>
+    <mat-paginator
+      [length]="totalElements"
+      [pageSize]="5"
+      [pageSizeOptions]="[5, 10, 15]"
+      showFirstLastButtons
+    >
+    </mat-paginator>
+    </div>
+  </div>
+  
