@@ -1,0 +1,78 @@
+<h2 mat-dialog-title>
+  {{
+    formUser.controls["identifier"].value
+      ? "Actualizar Editorial"
+      : "Registrar Editorial"
+  }}
+</h2>
+<mat-divider></mat-divider>
+<mat-dialog-content class="mat-typography">
+  <div [formGroup]="formUser" class="container">
+    <div class="row mt-1">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>IDENTIFICADOR</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="IDENTIFICADOR"
+          formControlName="identifier"
+        />
+        <mat-error> por favor, ingrese un identificador </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>NOMBRE COMPLETO</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="NOMBRE COMPLETO"
+          formControlName="fullName"
+        />
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>EMAIL</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="EMAIL"
+          formControlName="email"
+        />
+        <mat-error *ngIf="formUser.get('email')?.hasError('required')">
+          Por favor, ingrese un correo
+        </mat-error>
+        <mat-error *ngIf="formUser.get('email')?.hasError('email')">
+          por favor, ingrese un correo valido
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>ESTADO</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="ESTADO"
+          formControlName="state"
+        />
+      </mat-form-field>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-divider></mat-divider>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close type="button" (click)="onClose()">
+    Cerrar
+  </button>
+  <button
+    mat-button
+    mat-dialog-close
+    type="button"
+    [disabled]="onDisabled()"
+    (click)="onSubmit()"
+  >
+    Enviar
+  </button>
+</mat-dialog-actions>

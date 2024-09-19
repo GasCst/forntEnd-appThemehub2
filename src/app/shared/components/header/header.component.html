@@ -1,13 +1,10 @@
 <mat-toolbar color="primary">
-  <button
-    mat-icon-button
-    class="example-icon"
-    aria-label="Example icon-button with menu icon"
-  >
+  <button mat-icon-button (click)="toggleSidenav.emit()">
     <mat-icon svgIcon="menu"></mat-icon>
   </button>
+
   <span style="padding-right: 30px">ThemeHub</span>
-  
+
   <button mat-button [matMenuTriggerFor]="menuCatalogo">Catalogo TEMI</button>
   <mat-menu #menuCatalogo="matMenu">
     <button mat-menu-item (click)="goToTheme()">Gestisci tema</button>
@@ -17,17 +14,35 @@
 
   <button mat-button [matMenuTriggerFor]="menuSecurity">Sicurezza</button>
   <mat-menu #menuSecurity="matMenu">
-    <button mat-menu-item (click)="goToUserSecurity()">Gestire gli Utenti</button>
+    <button mat-menu-item (click)="goToUserSecurity()">
+      Gestire gli Utenti
+    </button>
     <button mat-menu-item (click)="goToRole()">Gestire il ruolo</button>
   </mat-menu>
 
-  <span class="example-spacer"></span>
+  <span class="spacer"></span>
 
-  <button
-    mat-icon-button
-    class="example-icon"
-    aria-label="Example icon-button with share icon"
-  >
-    <mat-icon svgIcon="sign_out"></mat-icon>
+  <button mat-icon-button (click)="openCart()">
+    <mat-icon svgIcon="order"></mat-icon>
+    <span class="cart-item-count" *ngIf="cartItemCount > 0">{{ cartItemCount }}</span>
   </button>
+
+  <button mat-icon-button [matMenuTriggerFor]="user">
+    <mat-icon svgIcon="menu"></mat-icon>
+  </button>
+  <mat-menu #user="matMenu">
+    <button mat-menu-item>
+      <mat-icon svgIcon="info"></mat-icon>
+      <span>Informazioni su ThemeHub</span>
+    </button>
+    <button mat-menu-item routerLink="/security/change-password">
+      <mat-icon svgIcon="update_password"></mat-icon>
+      <span>Cambia password</span>
+    </button>
+    <button mat-menu-item (click)="signOut()">
+      <mat-icon svgIcon="sign_out"></mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
 </mat-toolbar>
+

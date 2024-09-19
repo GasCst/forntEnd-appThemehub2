@@ -2,13 +2,11 @@
   <div class="row mt-3">
     <div class="mr-2">
       <span>
-        <a class="text-primary-600" href="javascript:void(0)">{{title}}</a>
+        <a class="text-primary-600" href="javascript:void(0)">{{ title }}</a>
       </span>
     </div>
     <div class="mr-2">
-      <span>
-        >
-      </span>
+      <span> > </span>
     </div>
     <div>
       <span>
@@ -21,69 +19,108 @@
   </div>
 </div>
 
-
 <div class="container">
-    <div class="row">
-      <div class="mr-2">
-        <button class="btn-raised" mat-raised-button (click)="onCreate( )">
-          <mat-icon svgIcon="plus"></mat-icon>
+  <div class="row">
+
+    <div class="mr-2">
+      <button class="btn-raised" mat-raised-button (click)="onCreate()">
+        <mat-icon svgIcon="plus"></mat-icon>
       </button>
-      </div>
-      <div class="mr-2">
-        <button  class="btn-raised"  mat-raised-button>
-          <mat-icon svgIcon="eraser"></mat-icon>
-      </button>
-      </div>
-      <div class="w-60">
-        <mat-form-field class="full-width" appearance="outline">
-          <mat-label>Ricerca Avanzata</mat-label>
-          <input type="text" matInput placeholder="Ricerca Avanzata">
-          <mat-icon matSuffix svgIcon="search"></mat-icon>
-        </mat-form-field>
-      </div>
     </div>
-</div>
 
-<div class="container">
-  <br />
-  <div class="mat-elevation-z8">
-  <table mat-table [dataSource]="lstDataSource">
-    <!--- Note that these columns can be defined in any order.
-                The actual rendered columns are set as a property on the row definition" -->
-
-    <!-- Position Column -->
-    <ng-container matColumnDef="ID">
-      <th mat-header-cell fxFlex="20%" fxFlexAlign="center" *matHeaderCellDef>IDENTIFIER</th>
-      <td mat-cell fxFlex="20%"  *matCellDef="let element">{{ element.id }}</td>
-    </ng-container>
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="DESCRIPTION">
-      <th mat-header-cell fxFlex="70%" fxFlexAlign="center"  *matHeaderCellDef>DESCRIPTION</th>
-      <td mat-cell fxFlex="70%"  *matCellDef="let element">{{ element.description }}</td>
-    </ng-container>
-
-    <ng-container matColumnDef="SELECT">
-      <th mat-header-cell fxFlex="10%" fxFlexAlign="center"  *matHeaderCellDef>SELECT</th>
-      <td mat-cell fxFlex="10%"  *matCellDef="let row">
-        <button mat-icon-button matTooltip="modifica" (click)="onCreate(row)">
-          <mat-icon svgIcon="edit"></mat-icon>
-        </button>
-        <button mat-icon-button matTooltip="elimina">
-          <mat-icon svgIcon="delete"></mat-icon>
-        </button>
-      </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="lstColumnsTable"></tr>
-    <tr mat-row *matRowDef="let row; columns: lstColumnsTable"></tr>
-  </table>
-  <mat-paginator
-    [length]="totalElements"
-    [pageSize]="5"
-    [pageSizeOptions]="[5, 10, 15]"
-    showFirstLastButtons
-  >
-  </mat-paginator>
+    <div class="mr-2">
+      <button class="btn-raised" mat-raised-button (click)="onEraser()">
+        <mat-icon svgIcon="eraser"></mat-icon>
+      </button>
+    </div>
+    
+    <div class="w-60">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Ricerca Avanzata</mat-label>
+        <input
+          type="text"
+          matInput
+          [(ngModel)]="search"
+          placeholder="Ricerca Avanzata"
+          (keydown.enter)="onSearch($event)"
+        />
+        <mat-icon matSuffix svgIcon="search"></mat-icon>
+      </mat-form-field>
+    </div>
   </div>
 </div>
+
+<div class="container">
+  <div class="row" matSort>
+    <mat-card
+      class="theme-card mat-elevation-z4"
+      *ngFor="let element of lstTheme"
+    >
+      <img
+        mat-card-image
+        src="{{ element.preview_image }}"
+        alt="Template Preview Image"
+      />
+      <mat-card-content>
+        <p style="font-size:xx-large; padding-top: 10px;"><b> {{ element.name }} </b></p>
+        <p>by: {{ element.author }}</p>
+        <br>
+        <p style="font-size: 40px;"> {{ element.price }}$</p>
+      </mat-card-content>
+
+      
+      <mat-card-actions>
+        <!-- Star Rating -->
+        <div class="rating-container">
+          <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+            <mat-icon
+              [svgIcon]="i < calculateAverageRating(element) ? 'star-solid' : 'star-regular'"
+              class="star"
+            >
+            </mat-icon>
+          </ng-container>
+          <div style=
+          "display: inline-block;
+           font-size: large;
+           "
+           >({{element.reviewList.length}})</div>
+
+        </div>
+      </mat-card-actions>
+
+      
+
+      <p style="font-size: large;"> -K Sales</p>
+      
+
+      <mat-card-actions align="end">
+        <button
+          mat-icon-button
+          matTooltip="Modifica"
+          (click)="onCreate(element)"
+        >
+          <mat-icon svgIcon="edit"></mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          matTooltip="Elimina"
+          (click)="confirmationDelete(element)"
+        >
+          <mat-icon svgIcon="delete"></mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <div class="paginator-container">
+    <mat-paginator
+      [length]="totalElements"
+      [pageSize]="5"
+      [pageSizeOptions]="[5, 10, 15]"
+      showFirstLastButtons
+    >
+    </mat-paginator>
+  </div>
+</div>
+
+

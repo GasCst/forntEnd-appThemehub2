@@ -1,56 +1,43 @@
-<ng-container *ngIf="true">
-  <div class="container-form-login">
-    <form class="log-in-form" [formGroup]="frmSingIn" autocomplete="off">
-      <h3>Login</h3>
-      <span
-        *ngIf="msgError"
-        class="full-width"
-        style="text-align: left; color: red"
-        >{{ msgError }}</span
-      >
-      <mat-form-field class="full-width" appearance="outline">
-        <mat-label>username</mat-label>
-        <input
-          matInput
-          formControlName="username"
-          placeholder="username"
-          type="text"
-        />
-        <button
-          type="button"
-          mat-button
-          matSuffix
-          mat-icon-button
-          aria-label="Clear"
-          *ngIf="frmSingIn.value.username"
-        >
-          <mat-icon matSuffix svgIcon="cancel"></mat-icon>
-        </button>
-      </mat-form-field>
-      <mat-form-field class="full-width" appearance="outline">
-        <mat-label>password</mat-label>
-        <input
-          matInput
-          [type]="hide ? 'password' : 'text'"
-          formControlName="password"
-          placeholder="password"
-          type="text"
-        />
-        <button
-          type="button"
-          mat-button
-          matSuffix
-          mat-icon-button
-          aria-label="Clear"
-          (click)="hide = !hide"
-          [attr.aria-label]="'Hide password'"
-          [attr.aria-pressed]="hide"
-          *ngIf="frmSingIn.value?.password"
-        >
-          <mat-icon matSuffix [svgIcon]="getIcon()"></mat-icon>
-        </button>
-      </mat-form-field>
-      <button class="btn" (click)="onSignIn()">Login</button>
+<div class="container">
+  <header>
+    <div class="logo">▲</div>
+    <div class="header-right">
+      <a href="#contact">Contact</a>
+      <a href="#signup">Sign Up</a>
+    </div>
+  </header>
+  
+  <main>
+    <h1>Log in to ThemeHub</h1>
+    <form (submit)="onLogin()">
+      <input matInput [(ngModel)]="username" name="username" type="username" required placeholder="Insert Username">
+      <input matInput [(ngModel)]="password" name="password" type="password" required placeholder="Insert Password" />
+      <button type="submit">
+        <i class="email-icon">✉</i> sign-in
+      </button>
     </form>
-  </div>
-</ng-container>
+    <a href="#other-options" class="other-options">← Other Login options</a>
+  </main>
+  
+  <footer>
+    <p>Don't have an account? <a href="#signup">Sign Up</a></p>
+    <div class="footer-info">
+      <span>© 2024</span>
+      <span class="status">● All systems normal</span>
+      <span>Command Menu <kbd>K</kbd></span>
+      <span class="theme-toggle">🌙</span>
+    </div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#documentation">Documentation</a>
+      <a href="#guides">Guides</a>
+      <a href="#help">Help</a>
+      <a href="#contact-sales">Contact Sales</a>
+      <a href="#blog">Blog</a>
+      <a href="#changelog">Changelog</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#enterprise">Enterprise</a>
+      <a href="#legal">Legal ▼</a>
+    </nav>
+  </footer>
+</div> 

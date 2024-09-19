@@ -4,15 +4,23 @@
 <mat-divider></mat-divider>
 <mat-dialog-content>
   <div class="container" [formGroup]="frmTheme">
+
     <div class="row">
       <mat-form-field class="w-100" appearance="outline">
-        <mat-label>IDENTIFIER</mat-label>
+        <mat-label>NAME</mat-label>
         <input
           type="text"
           matInput
-          placeholder="IDENTIFIER"
-          formControlName="id"
+          placeholder="name"
+          formControlName="name"
+          appUpper
         />
+        <mat-error *ngIf="frmTheme.get('title')?.hasError('required')">
+          Per favore inserisci un titolo.
+        </mat-error>
+        <mat-error *ngIf="frmTheme.get('title')?.hasError('isError')">
+          Carattere non permesso.
+        </mat-error>
       </mat-form-field>
     </div>
 
@@ -28,6 +36,116 @@
         <mat-error> Per favore, inserisci una descrizione </mat-error>
       </mat-form-field>
     </div>
+
+    <div class="row">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>preview_image</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="preview_image"
+          formControlName="preview_image"
+        />
+        <mat-error> Per favore, inserisci una preview_image </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>demo_url</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="demo_url"
+          formControlName="demo_url"
+        />
+        <mat-error> Per favore, inserisci una demo_url </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>category</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="category"
+          formControlName="category"
+        />
+        <mat-error> Per favore, inserisci una category </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>price</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="price"
+          formControlName="price"
+        />
+        <mat-error> Per favore, inserisci una price </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>author</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="author"
+          formControlName="author"
+        />
+        <mat-error> Per favore, inserisci una author </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>author_profile</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="author_profile"
+          formControlName="author_profile"
+        />
+        <mat-error> Per favore, inserisci una author_profile </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>download_link</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="download_link"
+          formControlName="download_link"
+        />
+        <mat-error> Per favore, inserisci una download_link </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>state</mat-label>
+        <input
+          type="text"
+          matInput
+          placeholder="state"
+          formControlName="state"
+        />
+        <mat-error> Per favore, inserisci una state </mat-error>
+      </mat-form-field>
+    </div>
+
+
+
+
+
+
   </div>
 </mat-dialog-content>
 <mat-divider></mat-divider>

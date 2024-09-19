@@ -8,4 +8,39 @@ table{
     cursor: pointer;
     text-align: center;
     justify-content: center;
-  }
+}
+
+/* Style for the entire card */
+.theme-card {
+  width: 400px; /* Adjust the width of the card */
+  margin: 20px; /* Add spacing between cards */
+}
+
+/* Style for the avatar inside the card */
+.theme-card .avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+
+/* Additional styling for the mat-card-image */
+.theme-card img.mat-card-image {
+  height: 150px; /* Adjust height of the image */
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+}
+
+.rating-container {
+  width: 380px;
+}
+
+.star {
+  width: 36px;
+  height: 36px;
+  margin-right: 10px;
+  color: gold;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+

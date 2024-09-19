@@ -48,5 +48,7 @@ export class IconModule {
         this._matIconRegister.addSvgIcon('upload', this._domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/menu/upload.svg'));
         this._matIconRegister.addSvgIcon('update_password', this._domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/menu/update_password.svg'));
         this._matIconRegister.addSvgIcon('update', this._domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/menu/update.svg'));
+        this._matIconRegister.addSvgIcon('star-regular', this._domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/star-regular.svg'));
+        this._matIconRegister.addSvgIcon('star-solid', this._domSanitizer.bypassSecurityTrustResourceUrl('assets/icons/star-solid.svg'));
     }
 }

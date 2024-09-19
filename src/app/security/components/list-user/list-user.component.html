@@ -1,0 +1,109 @@
+<div class="container">
+  <div class="row mt-3">
+    <div class="mr-2">
+      <span>
+        <a class="text-primary-600" href="javascript:void(0)">{{ title }}</a>
+      </span>
+    </div>
+    <div class="mr-2">
+      <span> > </span>
+    </div>
+    <div>
+      <span>
+        <a class="text-primary-600" href="javascript:void(0)"
+          >Administrar Usuario</a
+        >
+      </span>
+    </div>
+  </div>
+  <div class="row">
+    <h2 class="text-sub-title">Buscar Usuario</h2>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="mr-2">
+      <button class="btn-raised" mat-raised-button (click)="onCreater()">
+        <mat-icon svgIcon="plus"></mat-icon>
+      </button>
+    </div>
+    <div class="mr-2">
+      <button class="btn-raised" mat-raised-button>
+        <mat-icon svgIcon="eraser"></mat-icon>
+      </button>
+    </div>
+    <div class="w-60">
+      <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Busqueda Avanzada</mat-label>
+        <input type="text" matInput placeholder="Busqueda Avanzada" />
+        <mat-icon matSuffix svgIcon="search"></mat-icon>
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="mat-elevation-z8">
+    <table
+      *ngIf="totalElements"
+      mat-table
+      [dataSource]="lstMatDataSource"
+      matSort
+    >
+      <!-- Position Column -->
+      <ng-container matColumnDef="USUARIO">
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+          >USUARIO</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row">{{ row.identifier }}</mat-cell>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="NOMBRE COMPLETO">
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+          >NOMBRE COMPLET</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row">{{
+          row.fullName | firstUpper
+        }}</mat-cell>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="EMAIL">
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+          >EMAIL</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row">{{ row.email }}</mat-cell>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="ESTADO">
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+          >ESTADO</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row">{{ row.state }}</mat-cell>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="SELECCIONE">
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+          >SELECCIONE</mat-header-cell
+        >
+        <mat-cell *matCellDef="let row">
+          <button mat-icon-button matTooltip="Editar" (click)="onCreater(row)">
+            <mat-icon svgIcon="edit"></mat-icon>
+          </button>
+          <button mat-icon-button matTooltip="Eliminar">
+            <mat-icon svgIcon="delete"></mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="lstColumsTable"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: lstColumsTable"></mat-row>
+    </table>
+    <mat-paginator
+      [length]="totalElements"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      showFirstLastButtons
+    ></mat-paginator>
+  </div>
+</div>
