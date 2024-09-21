@@ -56,6 +56,96 @@ table {
 }
 
 
+
+
+.btn {
+  background-color: #ffc107;
+  display: flex;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  outline: none;
+  cursor: pointer;
+}
+
+
+.btn-confirmation {
+  background-color: #28a745;
+  color: #fff;
+}
+
+
+.btn-cancel {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+
+.btn-success {
+  background-color: #28a745;
+  color: #fff;
+}
+
+
+.btn-warning {
+  background-color: #ffc107;
+  color: #fff;
+}
+
+
+.btn-info {
+  background-color: #17a2b8;
+  color: #fff;
+}
+
+
+.btn-light {
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+
+.btn-dark {
+  background-color: #343a40;
+  color: #fff;
+}
+
+
+.btn-link {
+  background-color: transparent;
+  color: #007bff;
+  border: none;
+}
+
+
+.btn-outline-primary.btn-lg {
+  border: 2px solid #007bff;
+  border-radius: 30px;
+  padding: 10px 30px;
+}
+
+.btn-raised {
+  height: 52px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  justify-content: center;
+}
+
+
 .w-10 {
   width: 10%;
 }

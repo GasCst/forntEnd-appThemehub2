@@ -1,12 +1,18 @@
 import { ChangeDetectorRef, Component, Inject } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Category } from '../list-category/list-category.component';
+import { CommonModule } from '@angular/common';
+import { MaterialModule } from '../../../material.module';
+import { UpperDirective } from '../../../shared/directive/input/upper.directive';
+import { SharedModule } from '../../../shared/shared.module';
 
 @Component({
   selector: 'app-add-category',
   templateUrl: './add-category.component.html',
-  styleUrl: './add-category.component.scss'
+  styleUrl: './add-category.component.scss',
+  standalone: true,
+  imports: [CommonModule, SharedModule,MaterialModule, ReactiveFormsModule, FormsModule, UpperDirective],
 })
 
 export class AddCategoryComponent {

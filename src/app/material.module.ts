@@ -1,5 +1,6 @@
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { NgModule } from "@angular/core";
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule} from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -51,7 +52,9 @@ import { MatListModule } from '@angular/material/list';
         MatDividerModule,
         MatNativeDateModule,
         MatSnackBarModule,
-        MatListModule],
+        MatListModule,
+        MatSidenavModule
+    ],
     exports: [ MatToolbarModule,
         MatButtonModule,
         MatFormFieldModule,
@@ -76,11 +79,9 @@ import { MatListModule } from '@angular/material/list';
         MatDividerModule,
         MatNativeDateModule,
         MatSnackBarModule,
-        MatListModule]
+        MatListModule,
+        MatSidenavModule
+    ]
 })
 
-export class MaterialModule{ 
-    constructor() {
-        console.log('material.module.ts MODULE Component initialized');
-      }
-}
+export class MaterialModule{ }

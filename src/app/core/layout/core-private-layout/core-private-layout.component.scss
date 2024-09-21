@@ -1,0 +1,26 @@
+.sidenav-container {
+    height: 100%;
+    
+  }
+  
+.sidenav {
+    width: 250px;
+    background-color: #e59410; /* Slightly lighter for contrast */
+    color: #f2a9a9;
+}
+
+.sidenav a {
+    color: #e0e0e0;
+    font-weight: 500;
+    font-size: 14px;
+}
+.sidenav a.active {
+    background-color: #333;
+    border-left: 3px solid #3f51b5; /* Highlight active link */
+}
+  
+
+  
+.example-spacer {
+    flex: 1 1 auto;
+}

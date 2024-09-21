@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { AddCategoryComponent } from '../add-category/add-category.component';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MaterialModule } from '../../../material.module';
+import { SharedModule } from '../../../shared/shared.module';
 
 
 export interface Category {
@@ -21,9 +25,13 @@ const ELEMENT_DATA: Category[] = [
 @Component({
   selector: 'app-list-category',
   templateUrl: './list-category.component.html',
-  styleUrl: './list-category.component.scss'
+  styleUrl: './list-category.component.scss',
+  standalone: true,
+  imports: [CommonModule, SharedModule,MaterialModule, ReactiveFormsModule, FormsModule],
 })
 export class ListCategoryComponent {
+
+  
 
   public title!: string;
   public lstDataSource!: MatTableDataSource<any>;
